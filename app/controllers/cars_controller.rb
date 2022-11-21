@@ -20,23 +20,20 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
   end
 
-  def edit
-  end
-
   def destroy
     @car = Car.find(params[:id])
     @car.destroy
   end
 
   def update
-    @article = Article.find(params[:id])
-    @article.update(article_params)
-    redirect_to article_path(@article)
+    @car = Car.find(params[:id])
+    @car.update(params_car)
+    redirect_to car_path(@car)
   end
 
   private
 
   def params_car
-    params.require(:car).permit(:name, :model, :color, :city, :price, :autonomy, :kilometreage)
+    params.require(:car).permit(:brand, :model, :color, :city, :price, :autonomy, :kilometreage)
   end
 end
