@@ -1,10 +1,7 @@
-// Specific CSS for your home-page
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
-  height: calc(100vh - 60px);
-  z-index: 0;
+  padding: 1500px 0;
 }
 
 .banner h1 {
@@ -21,11 +18,3 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
-
-.btn btn-primary {
-  justify-content: center;
-}
-
-.img-tesla {
-  rotate: 0deg;
-  }
