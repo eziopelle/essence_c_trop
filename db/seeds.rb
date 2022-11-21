@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
+require "open-uri"
 
 Booking.destroy_all
 Car.destroy_all
+User.destroy_all
 
 p "---------destruction des 3 tables de la base----------"
 francis = User.create!(email: "francis@email.com", password: "francis1234")
@@ -18,9 +20,12 @@ p "---------on créer 3 user jordan simon et francis----------"
 
 [francis, simon, jordan].each do |user|
   3.times do
-    Car.create!(brand: Faker::Vehicle.manufacture, model: Faker::Vehicle.model, color: Faker::Vehicle.color,
+    file = URI.open("https://img.freepik.com/photos-gratuite/couleur-argent-mini-coupe-route-conduisez-sous-soleil_114579-5050.jpg?w=2000")
+    car = Car.create!(brand: Faker::Vehicle.manufacture, model: Faker::Vehicle.model, color: Faker::Vehicle.color,
               city: Faker::Address.city, kilometreage: Faker::Vehicle.kilometrage,
               price: [50, 100, 150, 200, 400, 700, 1000].sample, autonomy: [200, 350, 500, 575, 700, 800].sample, user: user)
+    car.photo.attach(io: file, filename: "voitures.jpg", content_type: "image/jpg")
+    car.save
   end
 end
 p "---------on creer 3 voitures pour chaque user----------"
