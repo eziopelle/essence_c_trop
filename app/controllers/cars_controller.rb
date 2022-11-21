@@ -31,6 +31,9 @@ class CarsController < ApplicationController
     redirect_to car_path(@car)
   end
 
+  def edit
+  end
+
   private
 
   def params_car
