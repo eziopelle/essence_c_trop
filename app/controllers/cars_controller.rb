@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   def index
-    @cars = Cars.all
+    @cars = Car.all
   end
 
   def new
@@ -17,23 +17,26 @@ class CarsController < ApplicationController
   end
 
   def show
-  end
-
-  def edit
-
+    @car = Car.find(params[:id])
   end
 
   def destroy
-
+    @car = Car.find(params[:id])
+    @car.destroy
   end
 
   def update
+    @car = Car.find(params[:id])
+    @car.update(params_car)
+    redirect_to car_path(@car)
+  end
 
+  def edit
   end
 
   private
 
   def params_car
-    params.require(:car).permit(:name, :model, :color, :city, :price, :autonomy, :kilometreage)
+    params.require(:car).permit(:brand, :model, :color, :city, :price, :autonomy, :kilometreage)
   end
 end
