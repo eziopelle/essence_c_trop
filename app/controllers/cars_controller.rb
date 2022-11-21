@@ -20,12 +20,15 @@ class CarsController < ApplicationController
   end
 
   def edit
+
   end
 
   def destroy
+
   end
 
   def update
+
   end
 
   private
