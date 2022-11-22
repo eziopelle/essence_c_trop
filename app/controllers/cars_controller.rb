@@ -3,7 +3,7 @@ class CarsController < ApplicationController
 
   def index
     @car = policy_scope(Car)
-    @cars = params[:query] ? Car.where("brand LIKE '%#{params[:query]}%'") : Car.all
+    @cars = params[:query] ? Car.where("model LIKE '%#{params[:query]}%'") : Car.all
   end
 
   def new
@@ -25,6 +25,7 @@ class CarsController < ApplicationController
   def show
     authorize @car
     @car = Car.find(params[:id])
+
   end
 
   def destroy
