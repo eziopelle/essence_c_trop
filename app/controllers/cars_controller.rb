@@ -30,9 +30,8 @@ class CarsController < ApplicationController
     @booking_dates = Booking.where(car: @car)
     @dates_unavailable = []
     @booking_dates.each do |booking|
-      @dates_unavailable << { from: booking.start_date, to: booking.end_date}
+      @dates_unavailable << { from: booking.start_date, to: booking.end_date }
     end
-    @booking.save
   end
 
   def destroy
