@@ -1,2 +1,11 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Booking Now</h1>
+
+<div>
+<%= simple_form_for [@car, @booking] do |f| %>
+  <%= f.input :status %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit "Confirm", class: "btn btn-primary" %>
+<% end %>
+</div>
+
