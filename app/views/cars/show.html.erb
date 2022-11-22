@@ -18,8 +18,7 @@
           <p><%= @car.autonomy %>km</p>
         </li>
       </ul>
-      <div>
-        <%= simple_form_for [@car, @booking], html:{data: {controller: "flatpicker", flatpicker_dates_unavailable_value: @dates_unavailable}} do |f| %>
+      <%= simple_form_for [@car, @booking], html:{data: {controller: "flatpicker", flatpicker_dates_unavailable_value: @dates_unavailable}} do |f| %>
         <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
         <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
         <%= f.submit "Confirm", class: "btn-flat" %>

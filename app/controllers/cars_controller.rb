@@ -34,6 +34,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
+    authorize @car
     @car.destroy
     redirect_to cars_path, status: :see_other
   end
