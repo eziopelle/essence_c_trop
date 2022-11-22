@@ -1,11 +1,25 @@
-<h1>Booking Now</h1>
 
-<div>
-<%= simple_form_for [@car, @booking] do |f| %>
-  <%= f.input :status %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit "Confirm", class: "btn btn-primary" %>
-<% end %>
+<div class = "container">
+ <div class = "text-center"><h1>Booking Now</h1></div>
+  <div class="row justify-content-between">
+    <div class="col-6">
+      <div class="border">
+      <%= simple_form_for [@car, @booking] do |f| %>
+        <div class = "row"><h2 class ="font-weight-bold"><%= f.input :status %></h2></div>
+        <div class = "row"><h2 class ="font-weight-bold"><%= f.input :start_date %></h2></div>
+        <div class = "row"><h2 class ="font-weight-bold"><%= f.input :end_date %></h2></div>
+        <div class = "text-center"><%= f.submit "Confirm", class: "btn btn-primary" %></div>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="col-6" class = img-formulaire>
+      <img src="https://img.freepik.com/vecteurs-premium/illustration-vectorielle-formulaire-demande-emploi-gens-selectionnent-curriculum-vitae-pour-emploi_545399-828.jpg?w=2000" alt="" class="w-100">
+    </div>
+  </div>
+
+
+
+
+
 </div>
-
