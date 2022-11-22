@@ -2,16 +2,19 @@ class CarsController < ApplicationController
   before_action :set_car, only: %i[edit update show]
 
   def index
-    @cars = params[:query] ? Car.where("name LIKE '%#{params[:query]}%'") : Car.all
+    @car = policy_scope(Car)
+    @cars = params[:query] ? Car.where("brand LIKE '%#{params[:query]}%'") : Car.all
   end
 
   def new
     @car = Car.new
+    authorize @car
   end
 
   def create
     @car = Car.new(params_car)
     @car.user = current_user
+    authorize @car
     if @car.save
       redirect_to cars_path
     else
@@ -20,6 +23,7 @@ class CarsController < ApplicationController
   end
 
   def show
+    authorize @car
     @car = Car.find(params[:id])
   end
 
@@ -31,6 +35,7 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
+    @car.user = current_user
     @car.update(params_car)
     redirect_to car_path(@car)
   end
