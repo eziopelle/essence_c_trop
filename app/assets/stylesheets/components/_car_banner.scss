@@ -1,12 +1,13 @@
 
 .img-tesla {
   position: absolute;
-  animation: play 5s steps(1000);
+  animation: play 4s steps(1000);
   animation-direction: alternate;
   width: 0;
+  z-index: 1;
 }
 
 @keyframes play {
-  from {bottom: -100px; left: 500px; opacity: 100; width: 250px;}
-  to {bottom: 500px; left: 1200px; opacity: 50; width: 0px;}
+  from {bottom: -100px; left: 450px; opacity: 100; width: 250px;}
+  to {bottom: 550px; left: 1100px; opacity: 50; width: 30px; rotate: -360deg;}
 }
