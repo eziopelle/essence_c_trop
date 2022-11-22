@@ -1,7 +1,9 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 1500px 0;
+  padding: 10px 0;
+  height: 100vh;
+  z-index: 0;
 }
 
 .banner h1 {
@@ -19,4 +21,10 @@
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   text-align: center;
+}
+
+.container-index{
+  position: relative;
+  margin-top: 150px;
+  z-index: 2;
 }
