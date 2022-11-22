@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   before_action :set_car, only: %i[edit update show]
 
   def index
-    @cars = params[:query] ? Car.where("name LIKE '%#{params[:query]}%'") : Car.all
+    @cars = params[:query] ? Car.where("model LIKE '%#{params[:query]}%'") : Car.all
   end
 
   def new
