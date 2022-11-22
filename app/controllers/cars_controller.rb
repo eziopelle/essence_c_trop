@@ -23,13 +23,14 @@ class CarsController < ApplicationController
   end
 
   def show
+    @car.user = current_user
     authorize @car
     @booking = Booking.new
     @dates = []
     @booking_dates = Booking.where(car: @car)
     @dates_unavailable = []
     @booking_dates.each do |booking|
-      @dates_unavailable << { from: booking.start_date, to: booking.end_date}
+      @dates_unavailable << { from: booking.start_date, to: booking.end_date }
     end
   end
 

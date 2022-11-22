@@ -21,8 +21,10 @@
       <a class="btn-flat" href="">confirmer la réservation</a>
       <%= link_to "Delete car", car_path(@car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
       <%= simple_form_for [@car, @booking], html:{data: {controller: "flatpicker", flatpicker_dates_unavailable_value: @dates_unavailable}} do |f| %>
-        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
-        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%# <input type="text" class="datepicker" hidden> %>
+        <%= f.input :start_date, as: :string, required: false, input_html: { class: "datepicker", hidden: true} %>
+        <%= f.input :end_date, as: :string, required: false, input_html: {
+          class: "datepicker", hidden: true} %>
         <%= f.submit "Confirm", class: "btn-flat" %>
         <% end %>
       </div>
