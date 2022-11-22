@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :set_car, only: %i[edit update show]
+  before_action :set_car, only: %i[edit update show destroy]
 
   def index
     @car = policy_scope(Car)
@@ -24,18 +24,24 @@ class CarsController < ApplicationController
 
   def show
     authorize @car
-    @car = Car.find(params[:id])
+    @booking = Booking.new
+    @dates = []
 
+    # Il faudra ajouter un where accepted true
+
+    @booking_dates = Booking.where(car: @car)
+    @dates_unavailable = []
+    @booking_dates.each do |booking|
+      @dates_unavailable << { from: booking.start_date, to: booking.end_date}
+    end
   end
 
   def destroy
-    @car = Car.find(params[:id])
     @car.destroy
     redirect_to cars_path, status: :see_other
   end
 
   def update
-    @car = Car.find(params[:id])
     @car.user = current_user
     @car.update(params_car)
     redirect_to car_path(@car)
