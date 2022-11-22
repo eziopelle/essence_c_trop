@@ -1,0 +1,24 @@
+
+
+.show-cards {
+  display: flex;
+  justify-content: center;
+  margin: 60px;
+  border-radius: 10px;
+
+}
+
+.car-photo {
+  object-fit: cover;
+  height: 400px;
+  width: 600px;
+
+
+}
+
+.car-infos {
+  width: 600px;
+  background-color: white;
+  padding: 80px;
+
+}
