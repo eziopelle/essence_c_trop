@@ -1,14 +1,15 @@
 <h1>Cars#new</h1>
 <p>Find me in app/views/cars/new.html.erb</p>
-
-<%= simple_form_for [@car] do |f| %>
-  <%= f.input :brand %>
-  <%= f.input :model %>
-  <%= f.input :color %>
-  <%= f.input :city %>
-  <%= f.input :price %>
-  <%= f.input :autonomy %>
-  <%= f.input :kilometreage %>
-  <%= f.input :photo, as: :file %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+  <%= simple_form_for [@car] do |f| %>
+    <%= f.input :brand %>
+    <%= f.input :model %>
+    <%= f.input :color %>
+    <%= f.input :city %>
+    <%= f.input :price %>
+    <%= f.input :autonomy %>
+    <%= f.input :kilometreage %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <% end %>
+</div>

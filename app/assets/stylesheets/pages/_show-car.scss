@@ -1,0 +1,37 @@
+
+
+.show-cards {
+  display: flex;
+  justify-content: center;
+  margin: 60px;
+  border-radius: 10px;
+
+}
+
+.car-photo {
+  object-fit: cover;
+  height: 400px;
+  width: 600px;
+
+
+}
+
+.car-infos {
+  width: 600px;
+  background-color: white;
+  padding: 60px;
+
+}
+
+.car-infos li {
+  list-style-type:none;
+}
+
+.car-infos .btn-flat {
+  align-items: flex-end;
+}
+
+.car-infos p  {
+  padding-left: 10px;
+  display: inline-block;
+}

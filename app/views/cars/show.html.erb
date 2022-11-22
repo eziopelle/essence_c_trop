@@ -1,2 +1,21 @@
-<h1>Cars#show</h1>
-<p>Find me in app/views/cars/show.html.erb</p>
+
+<div class="container">
+
+
+  <div class="show-cards">
+
+    <%= cl_image_tag(@car.photo.key, class:"car-photo" ) %>
+
+    <div class="car-infos">
+      <h1> <%= @car.brand %> - <%= @car.model %></h1>
+      <ul>
+        <li><i class="fa-sharp fa-solid fa-palette"></i><p><%= @car.color %></p></li>
+        <li><i class="fa-sharp fa-solid fa-road"></i><p><%= @car.kilometreage %>km</p></li>
+        <li><i class="fa-sharp fa-solid fa-battery-three-quarters"></i><p><%= @car.autonomy %>km</p></li>
+      </ul>
+      <a class="btn-flat" href="">confirmer la réservation</a>
+    </div>
+
+  </div>
+
+</div>
