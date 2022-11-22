@@ -1,0 +1,16 @@
+
+.img-tesla {
+  position: absolute;
+  animation: play 5s steps(1000);
+  animation-direction: alternate;
+  width: 0;
+}
+
+@keyframes play {
+  from {bottom: -100px; left: 500px; opacity: 100; width: 250px;}
+  to {bottom: 500px; left: 1200px; opacity: 50; width: 0px;}
+}
+
+.banner {
+  position: relative;
+}
