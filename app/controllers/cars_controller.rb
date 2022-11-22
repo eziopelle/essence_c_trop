@@ -25,11 +25,11 @@ class CarsController < ApplicationController
   def show
     authorize @car
     @car = Car.find(params[:id])
-
   end
 
   def destroy
     @car = Car.find(params[:id])
+    authorize @car
     @car.destroy
     redirect_to cars_path, status: :see_other
   end

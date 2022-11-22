@@ -14,6 +14,8 @@
         <li><i class="fa-sharp fa-solid fa-battery-three-quarters"></i><p><%= @car.autonomy %>km</p></li>
       </ul>
       <a class="btn-flat" href="">confirmer la réservation</a>
+      <%= link_to "Delete car", car_path(@car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
+
     </div>
 
   </div>
