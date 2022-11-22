@@ -26,9 +26,6 @@ class CarsController < ApplicationController
     authorize @car
     @booking = Booking.new
     @dates = []
-
-    # Il faudra ajouter un where accepted true
-
     @booking_dates = Booking.where(car: @car)
     @dates_unavailable = []
     @booking_dates.each do |booking|
@@ -37,6 +34,7 @@ class CarsController < ApplicationController
   end
 
   def destroy
+    authorize @car
     @car.destroy
     redirect_to cars_path, status: :see_other
   end

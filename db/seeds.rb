@@ -15,7 +15,7 @@ User.destroy_all
 p "---------destruction des 3 tables de la base----------"
 francis = User.create!(email: "francis@email.com", password: "francis1234")
 jordan = User.create!(email: "jordan@email.com", password: "jordan1234")
-simon = User.create!(email: "simon@email.com", password: "simon1234")
+simon = User.create!(email: "simon@email.com", password: "simon1234", admin: true)
 p "---------on créer 3 user jordan simon et francis----------"
 
 [francis, simon, jordan].each do |user|
