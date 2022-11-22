@@ -10,7 +10,6 @@ require "open-uri"
 
 Booking.destroy_all
 Car.destroy_all
-User.destroy_all
 
 p "---------destruction des 3 tables de la base----------"
 francis = User.create!(email: "francis@email.com", password: "francis1234")
