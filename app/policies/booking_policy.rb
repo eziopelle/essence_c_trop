@@ -1,4 +1,4 @@
-class CarPolicy < ApplicationPolicy
+class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       user.admin? ? scope.all : scope.where(user: user)
