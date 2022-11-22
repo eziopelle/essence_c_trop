@@ -23,6 +23,7 @@ class CarsController < ApplicationController
   end
 
   def show
+    @car.user = current_user
     authorize @car
     @booking = Booking.new
     @dates = []
@@ -31,6 +32,7 @@ class CarsController < ApplicationController
     @booking_dates.each do |booking|
       @dates_unavailable << { from: booking.start_date, to: booking.end_date}
     end
+    @booking.save
   end
 
   def destroy
