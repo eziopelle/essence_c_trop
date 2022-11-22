@@ -18,6 +18,8 @@
           <p><%= @car.autonomy %>km</p>
         </li>
       </ul>
+      <a class="btn-flat" href="">confirmer la réservation</a>
+      <%= link_to "Delete car", car_path(@car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
       <%= simple_form_for [@car, @booking], html:{data: {controller: "flatpicker", flatpicker_dates_unavailable_value: @dates_unavailable}} do |f| %>
         <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
         <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
@@ -26,3 +28,21 @@
       </div>
     </div>
   </div>
+<div class = "container">
+ <div class = "text-center"><h1>Booking Now</h1></div>
+  <div class="row justify-content-between">
+    <div class="col-6">
+      <div class="border">
+      <%= simple_form_for [@car, @booking], html:{data: {controller: "flatpicker", flatpicker_dates_unavailable_value: @dates_unavailable}} do |f| %>
+        <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"} %>
+        <div class = "text-center"><%= f.submit "Confirm", class: "btn btn-primary" %></div>
+      <% end %>
+      </div>
+    </div>
+
+    <div class="col-6" class = img-formulaire>
+      <img src="https://img.freepik.com/vecteurs-premium/illustration-vectorielle-formulaire-demande-emploi-gens-selectionnent-curriculum-vitae-pour-emploi_545399-828.jpg?w=2000" alt="" class="w-100">
+    </div>
+  </div>
+</div>

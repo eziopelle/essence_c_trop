@@ -1,15 +1,22 @@
-<h1>Cars#new</h1>
-<p>Find me in app/views/cars/new.html.erb</p>
+<div class="banner_index"
+  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'vacances.jpg'%>);">
+  <div class="container_index">
+    <h1>Post a new car </h1>
+    <%= link_to "Go back", "/", class: "btn btn-flat" %>
+  </div>
+</div>
 <div class="container">
-  <%= simple_form_for [@car] do |f| %>
-    <%= f.input :brand %>
-    <%= f.input :model %>
-    <%= f.input :color %>
-    <%= f.input :city %>
-    <%= f.input :price %>
-    <%= f.input :autonomy %>
-    <%= f.input :kilometreage %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
+  <div class="container">
+    <%= simple_form_for [@car] do |f| %>
+        <%= f.input :brand %>
+        <%= f.input :model %>
+        <%= f.input :color %>
+        <%= f.input :city %>
+        <%= f.input :price %>
+        <%= f.input :autonomy %>
+        <%= f.input :kilometreage %>
+        <%= f.input :photo, as: :file %>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <% end %>
+  </div>
 </div>
