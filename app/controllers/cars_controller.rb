@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   def index
-    @cars = Car.all
+    @cars = params[:query] ? Car.where("name LIKE '%#{params[:query]}%'") : Car.all
   end
 
   def new
