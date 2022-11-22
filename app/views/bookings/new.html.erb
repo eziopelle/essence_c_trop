@@ -1,11 +1,23 @@
 <h1>Booking Now</h1>
+<div class = "container">
+  <div class="row">
+    <div class="col-6">
+      <%= simple_form_for [@car, @booking] do |f| %>
+      <div class = "row"><%= f.input :status %></div>
+       <div class = "row"><%= f.input :start_date %></div>
+        <div class = "row"><%= f.input :end_date %></div>
+      <div class = "text-center"><%= f.submit "Confirm", class: "btn btn-primary" %></div>
+    <% end %>
+    </div>
 
-<div>
-<%= simple_form_for [@car, @booking] do |f| %>
-  <%= f.input :status %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit "Confirm", class: "btn btn-primary" %>
-<% end %>
+    <div class="col-6">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKq9RRNLwZpf8KwrrxGOe8wxZf5F-WurPdvQ&usqp=CAU" alt="" class="rounded">
+
+    </div>
+  </div>
+
+
+
+
+
 </div>
-
