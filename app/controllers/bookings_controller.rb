@@ -3,12 +3,14 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @car = Car.find(params[:car_id])
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.car = @car
     @booking.user = current_user
+    authorize @booking
     if @booking.save
       redirect_to car_path(@car)
     else
@@ -19,18 +21,23 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @car.user = current_user
+    authorize @booking
     @booking.destroy
     redirect_to car_path(@booking.car), status: :see_other
   end
 
   def accept
+    authorize @booking
     @status = @booking.status
-    @status = 'true'
+    @status = 'accepted'
+    @booking.save
   end
 
   def decline
+    authorize @booking
     @status = @booking.status
-    @status = 'false'
+    @status = 'declined'
+    @booking.save
   end
 
   private
