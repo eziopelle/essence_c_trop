@@ -1,22 +1,25 @@
+
 <div class="banner_index"
-  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'vacances.jpg'%>);">
-  <div class="container_index">
-    <h1>Louez votre voiture</h1>
-    <%= link_to "Retourner à l'accueil", "/", class: "btn btn-flat" %>
-  </div>
+   style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'vacances.jpg'%>);">
+   <div class="container_index">
+     <h1>Louez votre voiture</h1>
+     <%= link_to "Retourner à l'accueil", "/", class: "btn btn-flat" %>
+   </div>
 </div>
 <div class="container">
   <div class="form-group mt-3">
-    <%= simple_form_for [@car] do |f| %>
-        <%= f.input :brand, class: "form-control", placeholder: "Audi" %>
-        <%= f.input :model, class: "form-control", placeholder: "Q8 e-tron"  %>
-        <%= f.input :color, class: "form-control", placeholder: "Blanche"  %>
-        <%= f.input :city, class: "form-control", placeholder: "47 Rue Champfleuri, 63100 Clermont-Ferrand"  %>
-        <%= f.input :price, class: "form-control", placeholder: "75"  %>
-        <%= f.input :autonomy, class: "form-control", placeholder: "523"  %>
-        <%= f.input :kilometreage, class: "form-control", placeholder: "100"  %>
-        <%= f.input :photo, as: :file, class: "form-control", placeholder: "Ajoutez une photo de votre voiture"  %>
-        <%= f.submit "Submit", class: "btn btn-primary" %>
-      <% end %>
+    <div class="text">
+      <%= simple_form_for [@car] do |f| %>
+          <%= f.input :brand, class: "form-control", placeholder: "Audi" %>
+          <%= f.input :model, class: "form-control", placeholder: "Q8 e-tron"  %>
+          <%= f.input :color, class: "form-control", placeholder: "Blanche"  %>
+          <%= f.input :city, class: "form-control", placeholder: "47 Rue Champfleuri, 63100 Clermont-Ferrand"  %>
+          <%= f.input :price, class: "form-control", placeholder: "75"  %>
+          <%= f.input :autonomy, class: "form-control", placeholder: "523"  %>
+          <%= f.input :kilometreage, class: "form-control", placeholder: "100"  %>
+          <%= f.input :photo, as: :file, class: "form-control", placeholder: "Ajoutez une photo de votre voiture"  %>
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        <% end %>
+    </div>
   </div>
 </div>
