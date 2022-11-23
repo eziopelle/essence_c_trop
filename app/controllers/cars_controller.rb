@@ -39,6 +39,11 @@ class CarsController < ApplicationController
     @booking_dates.each do |booking|
       @dates_unavailable << { from: booking.start_date, to: booking.end_date }
     end
+    @markers = [{
+      lat: @car.latitude,
+      lng: @car.longitude
+    }]
+
   end
 
   def destroy

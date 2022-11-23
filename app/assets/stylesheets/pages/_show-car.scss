@@ -5,6 +5,7 @@
   justify-content: center;
   margin: 60px;
   border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1)
 
 }
 
@@ -19,7 +20,7 @@
 .car-infos {
   width: 600px;
   background-color: white;
-  padding: 60px;
+  padding: 50px;
 
 }
 
@@ -34,4 +35,23 @@
 .car-infos p  {
   padding-left: 10px;
   display: inline-block;
+}
+
+
+.photo-btn {
+  position: relative;
+}
+
+.photo-btn .btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.photo-map {
+  margin: 0px;
+}
+
+.btn-booking {
+  margin-top: 30px;
 }
