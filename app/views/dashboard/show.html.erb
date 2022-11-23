@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Bookings</h1>
+  <h2>Accepter ou refuser des demandes de reservations</h2>
+  <ol>
+  <% @bookings_as_owner.each do |booking|  %>
+    <li>User_id: <%= booking.user_id %>   email: <%= User.find(booking.user_id).email %>   Status: <%= booking.status %></li>
+    <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
+    <%= link_to "Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
+  <% end %>
+  </ol>
+  <h2>Mes demandes de reservations</h2>
+  <ol>
+  <% @bookings_as_renter.each do |booking|  %>
+    <li>User_id: <%= booking.user_id %>   email: <%= User.find(booking.user_id).email %>   Status: <%= booking.status %></li>
+  <% end %>
+  </ol>
+</div>
