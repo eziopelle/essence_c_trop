@@ -14,9 +14,15 @@
   font-weight: bold;
 }
 
-.banner p {
-  font-size: 20px;
+.banner h3 {
   color: white;
+  text-align: center;
+
+}
+
+.banner p {
+  font-size: 14px;
+  color: black;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
