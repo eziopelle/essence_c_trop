@@ -1,27 +1,46 @@
-<h1>Bookings</h1>
-<div class="container">
-
-<div class="d-flex justify-content-between">
-
-
-  <div class="card-product">
+<div class="banner_index"
+  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'vacances.jpg'%>);">
+  <div class="container_index">
+    <h1>Louez votre voiture</h1>
+    <%= link_to "Retourner à l'accueil", "/", class: "btn btn-flat" %>
+  </div>
+</div>
+<div class="container mt-3">
+  <h1>Mes réservations</h1>
+<div class="d-flex justify-content-between mt-3">
+  <div class="card-product mb-2">
     <h2>Accepter ou refuser des demandes de reservations</h2>
         <ol>
             <% @bookings_as_owner.each do |booking|  %>
-              <li> <strong><% booking.user_id %>. <%= User.find(booking.user_id).email %>  <%= booking.status %></strong></li>
-
-              <div class="accept"><%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "btn btn-accept "%></div>
-              <%= link_to "Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
+              <li>
+                  <ul>
+                    <li>Demande faite par: <strong><%= User.find(booking.user_id).email %></strong></li>
+                    <li>Voiture: <%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></li>
+                    <li>Status de la demande: <strong><%= booking.status %></strong></li>
+                    <li>Référence ID: <strong><%= booking.id %></strong></li>
+                    <li>De: <%= booking.start_date %> À: <%= booking.end_date %></li>
+                  </ul>
+                  <div class="accept">
+                    <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "btn btn-accept "%>
+                    <%= link_to "Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
+                  </div>
+              </li>
             <% end %>
         </ol>
-
   </div>
 
-  <div class="card-product">
+  <div class="card-product mb-2">
     <h2>Mes demandes de reservations</h2>
         <ol>
           <% @bookings_as_renter.each do |booking|  %>
-          <li><strong> <%= booking.user_id %>. <%= User.find(booking.user_id).email %> <%= booking.status %></strong></li>
+          <li>
+            <ul>
+              <li>Voiture: <%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></li>
+              <li>Status de la demande: <strong><%= booking.status %></strong></li>
+              <li>Référence ID: <strong><%= booking.id %></strong></li>
+              <li>De: <%= booking.start_date %> À: <%= booking.end_date %></li>
+            </ul>
+          </li>
           <% end %>
         </ol>
 
