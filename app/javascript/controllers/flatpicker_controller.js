@@ -5,19 +5,35 @@ import flatpickr from "flatpickr";
 // Connects to data-controller="flatpicker"
 export default class extends Controller {
   static values = {datesUnavailable: Array}
+
+  static targets = ["dates", "start", "end"]
+
   connect() {
-    console.log(this.datesUnavailableValue);
+    console.log("flatpicker");
+    console.log(this.datesTarget)
+
     flatpickr(".datepicker", {
       disable:
       this.datesUnavailableValue,
-      inline: true
-      // mode:'range'
+      mode:'range'
     });
   }
 
 
-  //changeDate (event) {
-    //const value = event.currentTarget.value
-    //this.startDateTarget.value = value.split("to", 1);
-    //this.endDateTarget.value = value.split("to") [2])
+  changeDate () {
+    console.log("changfemen de date")
+    console.log(this.datesTarget)
+    const dateValue = this.datesTarget.value
+    console.log(dateValue)
+    console.log(dateValue.split(" to "))
+    this.startTarget.value = dateValue.split(" to ")[0]
+
+    this.endTarget.value = dateValue.split(" to ")[1]
+
+
+
+    // let startDate = (this.startDateTarget.value = value.split("to") [1]);
+    // let endDate = (this.endDateTarget.value = value.split("to") [2]);
+    // let result = endDate - startDate
+  }
 }
