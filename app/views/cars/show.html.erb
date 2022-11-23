@@ -17,6 +17,9 @@
     <div class="car-infos">
       <h1> <%= @car.brand %> - <%= @car.model %></h1>
       <ul>
+        <li><i class="fa-sharp fa-solid fa-location-pin"></i>
+          <p><strong><%= @car.city %><strong></p>
+        </li>
         <li><i class="fa-sharp fa-solid fa-palette"></i>
           <p><%= @car.color %></p>
         </li>
