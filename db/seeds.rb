@@ -18,6 +18,7 @@ jordan = User.create!(email: "jordan@email.com", password: "jordan1234")
 simon = User.create!(email: "simon@email.com", password: "simon1234", admin: true)
 p "---------on créer 3 user jordan simon et francis----------"
 
+
 [francis, simon, jordan].each do |user|
   3.times do
     file = URI.open("https://img.freepik.com/photos-gratuite/couleur-argent-mini-coupe-route-conduisez-sous-soleil_114579-5050.jpg?w=2000")

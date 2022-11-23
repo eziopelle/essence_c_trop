@@ -4,6 +4,13 @@ class CarsController < ApplicationController
   def index
     @car = policy_scope(Car)
     @cars = params[:query] ? Car.where("model LIKE '%#{params[:query]}%'") : Car.all
+    @markers = @cars.geocoded.map do |car|
+      {
+        lat: car.latitude,
+        lng: car.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {car: car})
+      }
+    end
   end
 
   def new
