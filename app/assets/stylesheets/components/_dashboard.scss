@@ -7,12 +7,12 @@
 .card-product {
   background: white;
   padding:12px;
-  width: 500px;
+  width: 550px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius:10%;
+  border-radius:4%;
 }
 
 
 .btn-accept{
-  background-color: chartreuse;
+  background-color: $green;
 }
