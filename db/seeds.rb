@@ -16,7 +16,7 @@ p "---------destruction des 3 tables de la base----------"
 francis = User.create!(email: "francis@email.com", password: "francis1234")
 jordan = User.create!(email: "jordan@email.com", password: "jordan1234")
 simon = User.create!(email: "simon@email.com", password: "simon1234", admin: true)
-p "---------on créer 3 user jordan simon et francis----------"
+p "---------on créé 3 user jordan simon et francis----------"
 
 [francis, simon, jordan].each do |user|
   3.times do
@@ -28,9 +28,9 @@ p "---------on créer 3 user jordan simon et francis----------"
     car.save
   end
 end
-p "---------on creer 3 voitures pour chaque user----------"
+p "---------on créé 3 voitures pour chaque user----------"
 
 Booking.create!(status: 'pending', start_date: "21/11/2022", end_date: "23/02/2023", car: simon.cars.sample, user: francis)
 Booking.create!(status: 'pending', start_date: "12/12/2022", end_date: "20/03/2023", car: jordan.cars.sample, user: simon)
 Booking.create!(status: 'accepted', start_date: "18/04/2023", end_date: "21/04/2023", car: jordan.cars.sample, user: francis)
-p "---------done----------"
+p "---------finito pipo----------"
