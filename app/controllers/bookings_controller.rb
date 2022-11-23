@@ -18,28 +18,6 @@ class BookingsController < ApplicationController
     end
   end
 
-  def destroy
-    @booking = Booking.find(params[:id])
-    @car.user = current_user
-    authorize @booking
-    @booking.destroy
-    redirect_to car_path(@booking.car), status: :see_other
-  end
-
-  def accept
-    authorize @booking
-    @status = @booking.status
-    @status = 'accepted'
-    @booking.save
-  end
-
-  def decline
-    authorize @booking
-    @status = @booking.status
-    @status = 'declined'
-    @booking.save
-  end
-
   private
 
   def set_car
