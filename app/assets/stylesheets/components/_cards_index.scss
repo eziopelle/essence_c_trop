@@ -1,6 +1,5 @@
 
 .cards {
-  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
@@ -9,6 +8,10 @@
 .container-index{
   margin:0 auto;
   padding:30px;
+}
+
+.container-index h1 {
+  text-align:center,
 }
 
 
