@@ -16,11 +16,10 @@ export default class extends Controller {
   }
 
 
-  //changeDate (event) {
-    //const value = event.currentTarget.value
-    //this.startDateTarget.value = value.split("to", 1);
-    //this.endDateTarget.value = value.split("to", [2])
+  changeDate (event) {
+    const value = event.currentTarget.value
+    this.startDateTarget.value.split("to", 1);
+    this.endDateTarget.value.split("to", [2])
   }
-
 
 }
