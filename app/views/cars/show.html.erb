@@ -1,9 +1,18 @@
 <div class="container">
 
-
   <div class="show-cards">
 
-    <%= cl_image_tag(@car.photo.key, class:"car-photo" ) %>
+    <div class="photo-map">
+      <div class="photo-btn">
+        <%= cl_image_tag(@car.photo.key, class:"car-photo" ) %>
+        <%= link_to "x", car_path(@car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none" %>
+      </div>
+      <div style="width: 100%; height: 400px; margin: auto;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
 
     <div class="car-infos">
       <h1> <%= @car.brand %> - <%= @car.model %></h1>
@@ -12,25 +21,25 @@
           <p><%= @car.color %></p>
         </li>
         <li><i class="fa-sharp fa-solid fa-road"></i>
-          <p><%= @car.kilometreage %>km</p>
+          <p><%= @car.kilometreage %> km</p>
         </li>
         <li><i class="fa-sharp fa-solid fa-battery-three-quarters"></i>
-          <p><%= @car.autonomy %>km</p>
+          <p><%= @car.autonomy %> km</p>
         </li>
-      </ul>
-      <a class="btn-flat" href="">confirmer la réservation</a>
-      <%= link_to "Delete car", car_path(@car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
+        <li><i class="fa-sharp fa-solid fa-money-bill-wave"></i>
+          <p><%= @car.price %>€ / jour</p>
+        </li>
 
+      </ul>
 
         <%= simple_form_for [@car, @booking], html:{data: {controller: "flatpicker", flatpicker_dates_unavailable_value: @dates_unavailable}} do |f| %>
           <%# <input type="text" class="datepicker" hidden> %>
           <%= f.input :start_date, as: :string, required: false, input_html: { data: {flatpicker_target: "start"}}, wrapper_html: {class: "d-none"}  %>
           <%= f.input :end_date, as: :string, required: false, input_html: { data: {flatpicker_target: "end"}}, wrapper_html: {class: "d-none"}  %>
 
-          <input type="text" name="" id="select-dates" class="datepicker form-control string optional" data-flatpicker-target="dates" data-action= "change->flatpicker#changeDate">
+          <input type="text" name="" id="select-dates" class="datepicker form-control string optional" data-flatpicker-target="dates" data-action= "change->flatpicker#changeDate" hidden>
 
-
-          <%= f.submit "Confirm", class: "btn-flat" %>
+          <%= f.submit "Confirm", class: "btn-flat btn-booking"  %>
         <% end %>
       </div>
     </div>

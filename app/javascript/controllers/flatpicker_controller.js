@@ -15,7 +15,8 @@ export default class extends Controller {
     flatpickr(".datepicker", {
       disable:
       this.datesUnavailableValue,
-      mode:'range'
+      mode:'range',
+      inline: true
     });
   }
 
