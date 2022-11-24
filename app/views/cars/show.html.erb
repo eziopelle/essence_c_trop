@@ -20,6 +20,10 @@
         <% @car.average_rate.times do %>
         <li><i class="fa-sharp fa-solid fa-star"></i></li>
         <% end %>
+
+        <% (5 - @car.average_rate).times do %>
+          <li><i class="fa-regular fa-star"></i></li>
+        <% end %>
         <p><%= @car.reviews.count %> Avis</p>
       </ul>
       <ul>
@@ -61,18 +65,24 @@
         <% review.rating.times do %>
           <li><i class="fa-sharp fa-solid fa-star"></i></li>
         <% end %>
+        <% (5 - review.rating).times do %>
+          <li><i class="fa-regular fa-star"></i></li>
+        <% end %>
         </ul>
         <h3><%= review.title %></h3>
         <p><%= review.content %></p>
         <% end %>
     </div>
 
-    <div class="review_formulaire">
+    <div class="review_formulaire" data-controller="star-review">
       <h2>Ecrire un avis</h2>
       <%= simple_form_for [@car, @review] do |f| %>
         <%= f.input :title %>
         <%= f.input :content %>
-        <%= f.input :rating %>
+        <%= f.input :rating,as: :hidden, collection: Review::AUTHORIZED_RATINGS, include_blank: false, input_html: { data: {star_review_target: "input"}}%>
+        <% Review::AUTHORIZED_RATINGS.each do |index| %>
+          <i id="<%=index%>"class="fa-regular fa-star review-rating" data-star-review-target="star" data-action="click->star-review#rate mouseover->star-review#hoveri mouseout->star-review#hovero"></i>
+        <% end %>
         <%= f.submit "Confirm", class: "btn btn-flat" %>
       <% end %>
     </div>
