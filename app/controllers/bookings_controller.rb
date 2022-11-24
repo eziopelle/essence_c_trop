@@ -13,10 +13,19 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
     if @booking.save
+      sleep 3
       redirect_to dashboard_path
     else
       render "cars/show", status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.user = current_user
+    authorize @booking
+    @booking.destroy
+    redirect_to '/dashboard', status: :see_other
   end
 
   private

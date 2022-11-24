@@ -6,22 +6,24 @@
   margin: 60px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1)
-
 }
 
 .car-photo {
   object-fit: cover;
   height: 400px;
   width: 600px;
+}
 
-
+.car-photo-avatar {
+  object-fit: cover;
+  height: 40px;
+  width: 60px;
 }
 
 .car-infos {
   width: 600px;
   background-color: white;
   padding: 50px;
-
 }
 
 .car-infos li {
