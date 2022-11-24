@@ -16,6 +16,7 @@ class Car < ApplicationRecord
     }
 
   def average_rate
+    return 0 if reviews.count == 0
     sum = 0
     reviews.each do |review|
       sum += review.rating

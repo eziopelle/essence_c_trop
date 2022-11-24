@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_car, only: %i[show destroy]
+  before_action :set_car, only: %i[show destroy create new]
 
   def index
     @reviews = Review.all
@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
     @review = Review.new
     @car = Car.find(params[:car_id])
     authorize @review
-
   end
 
   def create
@@ -20,7 +19,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to cars_path
     else
-      render :new, status: :unprocessable_entity
+      render "cars/show", status: :unprocessable_entity
     end
 
   end
@@ -35,11 +34,11 @@ class ReviewsController < ApplicationController
 
   private
 
-  def set_review
-    @review = Review.find(params[:id])
+  def set_car
+    @car = Car.find(params[:car_id])
   end
 
   def params_review
-    params.require(:review).permit(:title, :content, :rating)
+    params.require(:review).permit(:title, :content, :rating, :user_id, :car_id)
   end
 end

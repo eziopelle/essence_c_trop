@@ -81,17 +81,30 @@
   font-size: 20px;
 }
 
+
 .show-reviews {
-display: flex;
-justify-content: center;
-margin: 60px;
-border-radius: 10px;
-box-shadow: 0 0 15px rgba(0,0,0,0.1)
+  display: flex;
+  margin: 0px auto;
+  justify-content: center;
+  margin: 60px;
+
 }
 
 .show-review {
-  width: 600px;
+justify-content: center;
+box-shadow: 0 0 15px rgba(0,0,0,0.1);
+width: 750px;
+background-color: white;
+padding: 50px;
+}
+
+.review_formulaire {
+  width: 450px;
   background-color: white;
   padding: 50px;
 
+}
+
+.show-review p {
+  margin-bottom: 50px;
 }

@@ -54,10 +54,9 @@
   <div class="show-reviews">
 
     <div class="show-review">
-      <div class="avis">
         <h2>Avis (<%= @car.reviews.count %>)</h2>
         <br>
-        <% @car.reviews.each do |review|%>
+        <% @car.reviews.reverse.each do |review|%>
         <ul class="star-average-list ps-0">
         <% review.rating.times do %>
           <li><i class="fa-sharp fa-solid fa-star"></i></li>
@@ -66,7 +65,16 @@
         <h3><%= review.title %></h3>
         <p><%= review.content %></p>
         <% end %>
-      </div>
+    </div>
+
+    <div class="review_formulaire">
+      <h2>Ecrire un avis</h2>
+      <%= simple_form_for [@car, @review] do |f| %>
+        <%= f.input :title %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.submit "Confirm", class: "btn btn-flat" %>
+      <% end %>
     </div>
 
   </div>
