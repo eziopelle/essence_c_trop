@@ -2,6 +2,7 @@ class Car < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
   has_many :bookings, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   validates :brand, :model, :color, :city, :price, :autonomy, :kilometreage, presence: true
   #ajout de Géocoder (vic)
   geocoded_by :city
