@@ -19,6 +19,14 @@ class BookingsController < ApplicationController
     end
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.user = current_user
+    authorize @booking
+    @booking.destroy
+    redirect_to '/dashboard', status: :see_other
+  end
+
   private
 
   def set_car

@@ -20,7 +20,7 @@
       <% @bookings_as_owner.each do |booking|  %>
 
         <div class="notification">
-          <%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %>
+          <a href="/cars/<%= booking.car_id %>"><%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %></a>
           <div class="notification-content">
             <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
             <p>Demande faite par: <strong><%= User.find(booking.user_id).email %></strong>. Pour votre voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
@@ -28,7 +28,7 @@
 
           <div class="notification-actions">
             <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "fas fa-check"%>
-            <%= link_to "Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark"%>
+            <%= link_to " Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark"%>
           </div>
         </div>
         <% end %>
@@ -51,7 +51,7 @@
       <% @bookings_as_renter.each do |booking|  %>
 
         <div class="notification">
-          <%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %>
+          <a href="/cars/<%= booking.car_id %>"><%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %></a>
           <div class="notification-content">
             <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
             <p>Demande faite par: <strong>moi</strong>. Pour la voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
@@ -59,7 +59,7 @@
 
           <div class="notification-actions">
             <p><small><%= booking.status %></small></p>
-            <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "fas fa-check"%>
+            <%= link_to "Annuler", car_booking_path(booking.car_id, booking.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark" %>
           </div>
         </div>
         <% end %>
