@@ -8,139 +8,63 @@
 
 
 <div class="container mt-3">
+      <H2>Reservations des mes voitures</H2>
       <div class="tabs">
-        <a href="" class="tab active">Demandes des mes voitures</a>
-        <a href="" class="tab">Mes réservations</a>
+        <a href="" class="tab active">En attente</a>
+        <a href="" class="tab">Acceptées</a>
+        <a href="" class="tab">Refusées</a>
+        <a href="" class="tab">Historique de toutes mes demandes</a>
       </div>
 
       <div class="notifications">
+      <% @bookings_as_owner.each do |booking|  %>
 
         <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
+          <%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %>
           <div class="notification-content">
-            <p><small>14th January</small></p>
-            <p>Arthur liked <a href="#">landing page concept</a>.</p>
+            <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
+            <p>Demande faite par: <strong><%= User.find(booking.user_id).email %></strong>. Pour votre voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
           </div>
 
           <div class="notification-actions">
-            <a href="#">Mark as seen <i class="fas fa-check"></i></a>
+            <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "fas fa-check"%>
+            <%= link_to "Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark"%>
           </div>
         </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/sarahlafer' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>14th January</small></p>
-            <p>Sarah started to follow you.</p>
-          </div>
-
-          <div class="notification-actions">
-            <a href="#">Follow back <i class="fas fa-user-plus"></i></a>
-          </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/pdunleav' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>13th January</small></p>
-            <p>Phelim started to follow you.</p>
-          </div>
-
-          <div class="notification-actions">
-            <a href="#">Follow back <i class="fas fa-user-plus"></i></a>
-          </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/papillard' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>10th January</small></p>
-            <p>Boris liked <a href="#">box shadow designs</a>.</p>
-          </div>
-
-          <div class="notification-actions">
-            <a href="#">Mark as seen <i class="fas fa-check"></i></a>
-          </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/db0sch' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>10th January</small></p>
-            <p>Dimitri posted a new shot <a href="#">Airbnb redesign</a>.</p>
-          </div>
-
-          <div class="notification-actions">
-            <a href="#">See shot <i class="fab fa-dribbble"></i></a>
-          </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/aliceclv' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>8th January</small></p>
-            <p>Alice liked <a href="#">landing page concept</a>.</p>
-          </div>
-
-          <div class="notification-actions">
-            <a href="#">Mark as seen <i class="fas fa-check"></i></a>
-          </div>
-        </div>
-
-        <div class="notification">
-          <img src='https://kitt.lewagon.com/placeholder/users/ssaunier' class="avatar-large"/>
-          <div class="notification-content">
-            <p><small>7th January</small></p>
-            <p>Seb added <a href="#">dashboard designs</a> to the <a href="#">LW project ideas</a> bucket.</p>
-          </div>
-
-          <div class="notification-actions">
-            <a href="#">Mark as seen <i class="fas fa-check"></i></a>
-          </div>
-        </div>
+        <% end %>
 
       </div>
 
     </div>
 </div>
 
-
 <div class="container mt-3">
-  <h1>Mes réservations</h1>
-<div class="d-flex justify-content-between mt-3">
-  <div class="card-product mb-2">
-    <h2>Accepter ou refuser des demandes de reservations</h2>
-        <ol>
-            <% @bookings_as_owner.each do |booking|  %>
-              <li>
-                  <ul>
-                    <li>Demande faite par: <strong><%= User.find(booking.user_id).email %></strong></li>
-                    <li>Voiture: <%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></li>
-                    <li>Status de la demande: <strong><%= booking.status %></strong></li>
-                    <li>Référence ID: <strong><%= booking.id %></strong></li>
-                    <li>De: <%= booking.start_date %> À: <%= booking.end_date %></li>
-                  </ul>
-                  <div class="accept">
-                    <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "btn btn-accept "%>
-                    <%= link_to "Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none"  %>
-                  </div>
-              </li>
-            <% end %>
-        </ol>
-  </div>
-  <div class="card-product mb-2">
-    <h2>Mes demandes de reservations</h2>
-        <ol>
-          <% @bookings_as_renter.each do |booking|  %>
-          <li>
-            <ul>
-              <li>Voiture: <%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></li>
-              <li>Status de la demande: <strong><%= booking.status %></strong></li>
-              <li>Référence ID: <strong><%= booking.id %></strong></li>
-              <li>De: <%= booking.start_date %> À: <%= booking.end_date %></li>
-            </ul>
-          </li>
-          <% end %>
-        </ol>
-  </div>
+      <H2>Mes demandes de reservations</H2>
+      <div class="tabs">
+        <a href="" class="tab active">En attente</a>
+        <a href="" class="tab">Acceptées</a>
+        <a href="" class="tab">Refusées</a>
+        <a href="" class="tab">Historique de toutes mes demandes</a>
+      </div>
+
+      <div class="notifications">
+      <% @bookings_as_renter.each do |booking|  %>
+
+        <div class="notification">
+          <%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %>
+          <div class="notification-content">
+            <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
+            <p>Demande faite par: <strong>moi</strong>. Pour la voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
+          </div>
+
+          <div class="notification-actions">
+            <p><small><%= booking.status %></small></p>
+            <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "fas fa-check"%>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+
+    </div>
 </div>
