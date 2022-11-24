@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     @review.user = current_user
     authorize @review
     if @review.save
-      redirect_to cars_path
+      redirect_to car_path(@car)
     else
       render "cars/show", status: :unprocessable_entity
     end
