@@ -8,10 +8,18 @@ class Car < ApplicationRecord
   geocoded_by :city
   after_validation :geocode, if: :will_save_change_to_city?
 
-include PgSearch::Model
-  pg_search_scope :search,
-  against: [ :brand, :model, :color, :city, :autonomy, :price, :kilometreage ],
-  using: {
-    tsearch: { prefix: true }
-  }
+  include PgSearch::Model
+    pg_search_scope :search,
+    against: [ :brand, :model, :color, :city, :autonomy, :price, :kilometreage ],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  def average_rate
+    sum = 0
+    reviews.each do |review|
+      sum += review.rating
+    end
+    sum / reviews.count
+  end
 end
