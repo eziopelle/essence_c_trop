@@ -61,3 +61,35 @@
 .btn-booking {
   margin-top: 30px;
 }
+
+.star-average-list ul {
+  display: inline;
+  padding: 0px;
+}
+
+.star-average-list li {
+  display: inline;
+  margin : 0px;
+  padding : 0px;
+}
+
+.star-average-list i {
+  color : goldenrod;
+  padding : 0px;
+  font-size: 20px;
+}
+
+.show-reviews {
+display: flex;
+justify-content: center;
+margin: 60px;
+border-radius: 10px;
+box-shadow: 0 0 15px rgba(0,0,0,0.1)
+}
+
+.show-review {
+  width: 600px;
+  background-color: white;
+  padding: 50px;
+
+}
