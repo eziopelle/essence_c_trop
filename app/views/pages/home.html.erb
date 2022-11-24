@@ -19,6 +19,7 @@
   <% end %>
   <%= image_tag 'tesla.png', class: 'img-tesla' %>
   <div class="card-last">
+  <h1 class="mb-3">Voitures ajoutées récemment</h1>
   <div class="cards">
     <% @cars.each do |car| %>
     <%= link_to car_path(car)  do %>
@@ -40,11 +41,6 @@
 </div>
 
 </div>
-  <div style="width: 95%; height: 500px; margin: 30px auto; box-shadow: 0 0 15px rgba(0,0,0,0.1);"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
 
 <div>
 <article class="logo-grid">
