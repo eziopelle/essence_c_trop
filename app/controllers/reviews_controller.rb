@@ -6,15 +6,31 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @review = Review.new
+    @car = Car.find(params[:car_id])
+    authorize @review
+
   end
 
   def create
+    @review = Review.new(params_review)
+    @review.car = @car
+    @review.user = current_user
+    authorize @review
+    if @review.save
+      redirect_to cars_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+
   end
 
   def show
   end
 
   def delete
+    @review = Review.find(params[:car_id])
+    @review.destroy
   end
 
   private
@@ -24,6 +40,6 @@ class ReviewsController < ApplicationController
   end
 
   def params_review
-    params.require(:car).permit(:content, :rating)
+    params.require(:review).permit(:title, :content, :rating)
   end
 end
