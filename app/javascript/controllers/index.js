@@ -14,6 +14,8 @@ application.register("map", MapController)
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 
-
 import FlatpickerController from "./flatpicker_controller"
 application.register("flatpicker", FlatpickerController)
+
+import AlertController from "./alert_controller"
+application.register("alert", AlertController)
