@@ -6,6 +6,7 @@ ruby "3.1.2"
 #Les gems que j'ai rajouté :victor
 gem "faker"
 gem "geocoder"
+gem "pg_search"
 
 gem "devise"
 

@@ -2,8 +2,16 @@ class CarsController < ApplicationController
   before_action :set_car, only: %i[edit update show destroy]
 
   def index
+    # @car = policy_scope(Car)
+    # @cars = params[:query] ? Car.where("model LIKE '%#{params[:query]}%'") : Car.all
     @car = policy_scope(Car)
-    @cars = params[:query] ? Car.where("model LIKE '%#{params[:query]}%'") : Car.all
+
+    if params[:query].present?
+      @cars = Car.search(params[:query])
+    else
+      @cars = Car.all
+    end
+
     @markers = @cars.geocoded.map do |car|
       {
         lat: car.latitude,
