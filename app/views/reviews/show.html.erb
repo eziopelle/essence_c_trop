@@ -1,0 +1,9 @@
+<h1>Reviews#show</h1>
+<p>Find me in app/views/reviews/show.html.erb</p>
+<%= simple_form_for [@car, @review] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Confirm", class: "btn btn-primary" %>
+<% end %>
+

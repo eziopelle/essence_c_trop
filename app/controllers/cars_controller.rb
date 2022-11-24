@@ -43,6 +43,7 @@ class CarsController < ApplicationController
     authorize @car
     @booking = Booking.new
     @dates = []
+    @reviews = @car.reviews
     @booking_dates = Booking.where(car: @car)
     @dates_unavailable = []
     @booking_dates.each do |booking|

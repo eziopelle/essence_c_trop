@@ -16,7 +16,8 @@ export default class extends Controller {
       disable:
       this.datesUnavailableValue,
       mode:'range',
-      inline: true
+      inline: true,
+      minDate: 'today'
     });
   }
 
