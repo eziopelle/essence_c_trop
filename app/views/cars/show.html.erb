@@ -5,7 +5,7 @@
     <div class="photo-map">
       <div class="photo-btn">
         <%= cl_image_tag(@car.photo.key, class:"car-photo" ) %>
-        <%= link_to "x", car_path(@car), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger text-decoration-none" %>
+        <%= link_to "x", car_path(@car), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger text-decoration-none" %>
       </div>
       <div style="width: 100%; height: 400px; margin: auto;"
         data-controller="map"
@@ -42,7 +42,7 @@
 
           <input type="text" name="" id="select-dates" class="datepicker form-control string optional" data-flatpicker-target="dates" data-action= "change->flatpicker#changeDate" hidden>
 
-          <%= f.submit "Confirm", class: "btn-flat btn-booking"  %>
+          <%= f.submit "Confirmer votre location", class: "btn-flat btn-booking", data: { controller: 'alert', action: 'click->alert#accept_show'}  %>
         <% end %>
 
       </div>

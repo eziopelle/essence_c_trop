@@ -7,6 +7,7 @@ ruby "3.1.2"
 gem "faker"
 gem "geocoder"
 gem "pg_search"
+gem "sweetalert2"
 
 gem "devise"
 

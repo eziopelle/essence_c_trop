@@ -31,6 +31,7 @@ class CarsController < ApplicationController
     @car.user = current_user
     authorize @car
     if @car.save
+      sleep 3
       redirect_to cars_path
     else
       render :new, status: :unprocessable_entity
