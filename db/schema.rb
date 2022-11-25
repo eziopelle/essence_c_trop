@@ -100,10 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_154039) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin"
-    t.bigint "review_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["review_id"], name: "index_users_on_review_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -113,5 +111,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_24_154039) do
   add_foreign_key "cars", "users"
   add_foreign_key "reviews", "cars"
   add_foreign_key "reviews", "users"
-  add_foreign_key "users", "reviews"
 end
