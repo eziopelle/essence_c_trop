@@ -3,10 +3,6 @@
   background: white;
   background-color: transparent;
   transition: 0.5s background-color ease;
-  a {
-    color: white;
-
-  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -27,5 +23,17 @@
   a {
     color: black;
 
+  }
+}
+
+.all-text-black {
+  a {
+    color: black;
+  }
+}
+
+.all-text-white {
+  a {
+    color: white;
   }
 }
