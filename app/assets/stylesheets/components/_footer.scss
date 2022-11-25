@@ -1,0 +1,16 @@
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: lightgray;
+  box-shadow: 10px;
+}
+
+.infos-footer {
+  text-align: center;
+  size: 10px;
+}
+
+.maintain_height {
+  min-height: calc(100vh - 45px);
+}
