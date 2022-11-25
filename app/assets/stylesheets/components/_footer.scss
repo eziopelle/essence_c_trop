@@ -1,0 +1,27 @@
+.footer {
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: white;
+  box-shadow: 10px;
+}
+
+.infos-footer {
+  text-align: center;
+  display: flex;
+  size: 8px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.maintain_height {
+  min-height: calc(100vh - 45px);
+}
+
+.logos-network {
+  text-align: center;
+  background-color: white;
+i {
+  padding: 10px;
+}
+}
