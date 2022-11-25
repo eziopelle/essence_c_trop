@@ -4,6 +4,11 @@
 
 import { application } from "./application"
 
+import AlertController from "./alert_controller"
+application.register("alert", AlertController)
+
+import FlatpickerController from "./flatpicker_controller"
+application.register("flatpicker", FlatpickerController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
@@ -14,8 +19,5 @@ application.register("map", MapController)
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
 
-import FlatpickerController from "./flatpicker_controller"
-application.register("flatpicker", FlatpickerController)
-
-import AlertController from "./alert_controller"
-application.register("alert", AlertController)
+import StarReviewController from "./star_review_controller"
+application.register("star-review", StarReviewController)
