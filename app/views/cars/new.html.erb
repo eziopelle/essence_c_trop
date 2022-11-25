@@ -1,6 +1,6 @@
 
 <div class="banner_index"
-  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'vacances.jpg'%>);">
+  style="background-image: url(<%= image_path('recharge.png') %>)">
   <div class="container_index">
     <h1>Louez votre voiture</h1>
     <%= link_to "Retourner à l'accueil", "/", class: "btn btn-flat" %>
@@ -18,7 +18,7 @@
           <%= f.input :autonomy, class: "form-control", placeholder: "523", label: "Autonomie"  %>
           <%= f.input :kilometreage, class: "form-control", placeholder: "100",label: "Kilométrage"   %>
           <%= f.input :photo, as: :file, class: "form-control", placeholder: "Ajoutez une photo de votre voiture" %>
-          <%= f.submit "Publier", class: "btn btn-primary"%>
+          <%= f.submit "Publier", class: "btn btn-flat"%>
         <% end %>
     </div>
   </div>

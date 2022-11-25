@@ -1,2 +1,7 @@
-<h2><%= car.brand %></h2>
-<p><%= car.city %></p>
+
+    <%= link_to car_path(car)  do %>
+  <div class="car-infoo">
+    <h3><%= car.brand %></h3>
+    <p><%= car.city %></p>
+  </div>
+    <% end %>
