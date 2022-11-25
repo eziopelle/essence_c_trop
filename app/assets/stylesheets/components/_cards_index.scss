@@ -19,6 +19,8 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  transform: scale(1);
+  transition: transform 0.2s ease-in;
 }
 
 .card-trip > img {
@@ -72,6 +74,5 @@
 }
 
 .card-trip:hover {
-  box-shadow: 0 0 10px $green
+  transform: scale(1.03);
 }
-
