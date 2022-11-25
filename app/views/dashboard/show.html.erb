@@ -1,70 +1,58 @@
-<div class="banner_index"
-  style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'vacances.jpg'%>);">
-  <div class="container_index">
-    <h1>Louez votre voiture</h1>
-    <%= link_to "Retourner à l'accueil", "/", class: "btn btn-flat" %>
+<div class="container">
+
+
+  <div class="mb-3 mt-3" data-controller="dashboard">
+        <H2>Reservations des mes voitures</H2>
+        <div class="tabs" >
+          <a href="" class="tab active" data-dashboard-target="tab" data-action="click->dashboard#changeTab">En attente</a>
+          <a href="" class="tab" data-dashboard-target="tab" data-action="click->dashboard#changeTab">Acceptées</a>
+          <a href="" class="tab" data-dashboard-target="tab" data-action="click->dashboard#changeTab">Refusées</a>
+          <a href="" class="tab " data-dashboard-target="tab" data-action="click->dashboard#changeTab">Historique de toutes mes demandes</a>
+        </div>
+
+        <div class="notifications">
+          <% @bookings_as_owner.each do |booking|  %>
+
+            <div class="notification <%= booking.status %> <%= booking.status == 'pending' ? "" : "d-none" %>" data-dashboard-target="notification">
+              <a href="/cars/<%= booking.car_id %>"><%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %></a>
+              <div class="notification-content">
+                <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
+                <p>Demande faite par: <strong><%= User.find(booking.user_id).email %></strong>. Pour votre voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
+              </div>
+
+              <div class="notification-actions">
+                <p><small><%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "fas fa-check"%></small></p>
+                <p><small><%= link_to " Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark"%></small></p>
+              </div>
+            </div>
+            <% end %>
+        </div>
   </div>
-</div>
 
-
-<div class="container mt-3 mb-3">
-      <H2>Reservations des mes voitures</H2>
-      <div class="tabs">
-        <a href="" class="tab active">En attente</a>
-        <a href="" class="tab">Acceptées</a>
-        <a href="" class="tab">Refusées</a>
-        <a href="" class="tab">Historique de toutes mes demandes</a>
-      </div>
-
-      <div class="notifications">
-      <% @bookings_as_owner.each do |booking|  %>
-
-        <div class="notification">
-          <a href="/cars/<%= booking.car_id %>"><%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %></a>
-          <div class="notification-content">
-            <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
-            <p>Demande faite par: <strong><%= User.find(booking.user_id).email %></strong>. Pour votre voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
-          </div>
-
-          <div class="notification-actions">
-            <%= link_to "Accepter", dashboard_accept_path(booking:booking.id), data: {method: :accept, turbo_confirm: "Are you sure?"}, class: "fas fa-check"%>
-            <%= link_to " Refuser", dashboard_decline_path(booking:booking.id), data: {method: :decline, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark"%>
-          </div>
+  <div class="mb-3 mt-3" data-controller="dashboard-demandes">
+        <H2>Mes demandes de reservations</H2>
+        <div class="tabs" >
+          <a href="" class="tab active" data-dashboard-demandes-target="tab" data-action="click->dashboard-demandes#changeTab">En attente</a>
+          <a href="" class="tab" data-dashboard-demandes-target="tab" data-action="click->dashboard-demandes#changeTab">Acceptées</a>
+          <a href="" class="tab" data-dashboard-demandes-target="tab" data-action="click->dashboard-demandes#changeTab">Refusées</a>
+          <a href="" class="tab " data-dashboard-demandes-target="tab" data-action="click->dashboard-demandes#changeTab">Historique de toutes mes demandes</a>
         </div>
-        <% end %>
 
-      </div>
+        <div class="notifications">
+        <% @bookings_as_renter.each do |booking|  %>
 
-    </div>
-</div>
+          <div class="notification <%= booking.status %> <%= booking.status == 'pending' ? "" : "d-none" %>" data-dashboard-demandes-target="notification">
+            <a href="/cars/<%= booking.car_id %>"><%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %></a>
+            <div class="notification-content">
+              <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
+              <p>Demande faite pour la voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
+            </div>
 
-<div class="container mb-3 mt-3">
-      <H2>Mes demandes de reservations</H2>
-      <div class="tabs">
-        <a href="" class="tab active">En attente</a>
-        <a href="" class="tab">Acceptées</a>
-        <a href="" class="tab">Refusées</a>
-        <a href="" class="tab">Historique de toutes mes demandes</a>
-      </div>
-
-      <div class="notifications">
-      <% @bookings_as_renter.each do |booking|  %>
-
-        <div class="notification">
-          <a href="/cars/<%= booking.car_id %>"><%= cl_image_tag(Car.find(booking.car_id).photo.key, class:"car-photo-avatar" )  %></a>
-          <div class="notification-content">
-            <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
-            <p>Demande faite par: <strong>moi</strong>. Pour la voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
+            <div class="notification-actions">
+              <p><small><%= link_to "Annuler", car_booking_path(booking.car_id, booking.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark" %></small></p>
+            </div>
           </div>
-
-          <div class="notification-actions">
-            <p><small><%= booking.status %></small></p>
-            <%= link_to "Annuler", car_booking_path(booking.car_id, booking.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa  fa-xmark" %>
-          </div>
+          <% end %>
         </div>
-        <% end %>
-
-      </div>
-
-    </div>
+  </div>
 </div>
