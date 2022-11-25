@@ -1,7 +1,7 @@
 
-    <%= link_to car_path(car)  do %>
+<%= link_to car_path(car) do %>
   <div class="car-infoo">
-    <h3><%= car.brand %></h3>
-    <p><%= car.city %></p>
+      <%= cl_image_tag car.photo.key, class:"car-photo-info" %>
+      <p><%= car.model %> - <%= car.brand %></p>
   </div>
-    <% end %>
+<% end %>

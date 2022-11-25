@@ -5,7 +5,9 @@
     <div class="photo-map">
       <div class="photo-btn">
         <%= cl_image_tag(@car.photo.key, class:"car-photo" ) %>
-        <%= link_to "x", car_path(@car), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger text-decoration-none" %>
+        <% if current_user == @car.user %>
+          <%= link_to "x", car_path(@car), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger text-decoration-none" %>
+        <% end %>
       </div>
       <div style="width: 100%; height: 400px; margin: auto;"
         data-controller="map"
@@ -88,5 +90,4 @@
     </div>
 
   </div>
-
 </div>
