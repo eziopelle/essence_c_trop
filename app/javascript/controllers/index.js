@@ -7,6 +7,12 @@ import { application } from "./application"
 import AlertController from "./alert_controller"
 application.register("alert", AlertController)
 
+import DashboardController from "./dashboard_controller"
+application.register("dashboard", DashboardController)
+
+import DashboardDemandesController from "./dashboard_demandes_controller"
+application.register("dashboard-demandes", DashboardDemandesController)
+
 import FlatpickerController from "./flatpicker_controller"
 application.register("flatpicker", FlatpickerController)
 
