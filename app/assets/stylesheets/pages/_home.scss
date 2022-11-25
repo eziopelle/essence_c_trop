@@ -1,22 +1,22 @@
 // Specific CSS for your home-page
-.banner {
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  z-index: 0;
-}
+
+
 
 .banner h1 {
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
+  padding: 10px;
   font-weight: bold;
+  margin: 10px;
 }
 
 .banner h3 {
   color: white;
   text-align: center;
+  padding: 10px;
+  margin: 10px;
 
 }
 
@@ -25,13 +25,67 @@
   color: black;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  padding: 10px;
+  margin: 10px;
 }
 
 .btn btn-primary {
   justify-content: center;
+  padding: 10px;
+  margin: 10px;
 }
 
 .card-last {
-  margin-top: 150px;
   padding: 40px;
+}
+
+.cards-argus {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin:60px;
+  padding: 20px;
+}
+
+.card-argu {
+  text-align: center;
+
+
+}
+
+.card-argu h2 {
+  color: $green;
+}
+
+.logo-grid {
+  margin-top: 60px;
+}
+
+.cards-argus-bas {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  margin-right:200px;
+  margin-left:200px;
+  padding: 20px;
+}
+
+.container-h {
+  margin-bottom: 20px;
+  background-image: center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container-h p {
+color : white;
+}
+
+h2.titleh {
+  margin: 40px;
+
 }
