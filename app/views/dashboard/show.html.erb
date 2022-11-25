@@ -18,6 +18,7 @@
               <div class="notification-content">
                 <p><small>Du <%= booking.start_date %> au <%= booking.end_date %></small></p>
                 <p>Demande faite par: <strong><%= User.find(booking.user_id).email %></strong>. Pour votre voiture <a href="/cars/<%= booking.car_id %>"><%= Car.find(booking.car_id).brand %> - <%= Car.find(booking.car_id).model %></a>.</p>
+                <p><small>Vous pourriez gagner : <%= (booking.end_date - booking.start_date).to_i * Car.find(booking.car_id).price.to_i %> €</small></p>
               </div>
 
               <div class="notification-actions">
