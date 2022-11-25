@@ -1,18 +1,18 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('home_banner.jpg') %>)">
   <h1>L'essence, c'est trop ! <strong>Passez à la location</strong> de <strong>voitures électriques</strong>!</h1>
-  <h3>Louer des voitures électriques pour l'environnement</h3>
-  <%# <a class="btn btn-primary" href="/cars">Accédez aux voitures</a> %>
-  <div class="container">
-    <%= form_with url: cars_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Rechercher une voiture" %>
-      <%# <%= submit_tag "Rechercher", class: "btn btn-flat mt-2 mb-6 fas fa-search" %>
-    <div class="search-form-control form-group text-center">
-      <button name="button" type="submit" class="btn btn-flat mt-2 mb-6">
-        <i class="fas fa-search"></i> Rechercher
-      </button>
+    <h3>Louer des voitures électriques pour l'environnement</h3>
+    <%# <a class="btn btn-primary" href="/cars">Accédez aux voitures</a> %>
+    <div class="container">
+      <%= form_with url: cars_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Rechercher une voiture" %>
+        <%# <%= submit_tag "Rechercher", class: "btn btn-flat mt-2 mb-6 fas fa-search" %>
+      <div class="search-form-control form-group text-center">
+        <button name="button" type="submit" class="btn btn-flat mt-2 mb-6">
+          <i class="fas fa-search"></i> Rechercher
+        </button>
 </div>
 
   </div>

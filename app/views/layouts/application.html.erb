@@ -18,15 +18,50 @@
   </head>
 
   <body>
-    <% if controller_name == "pages"  %>
+    <div class="maintain_height">
+      <% if controller_name == "pages"  %>
         <%= render "shared/navbar_home" %>
-    <% else %>
+      <% else %>
         <%= render "shared/navbar" %>
-    <% end %>
-    <%= render "shared/flashes" %>
+      <% end %>
+      <%= render "shared/flashes" %>
+      <%= yield %>
+    </div>
+    <footer>
+      <div class="footer infos-footer decoration-none">
+        <div>
+          <p>© 2022 L'essence c'est trop, inc.</p>
+        </div>
+        <div>
+          <i class="fa-solid fa-car-side mt-1 ms-1 me-1 mb-3"></i>
+          <a href="/terms/privacy_policy">Confidentialité</a>
+          <i class="fa-solid fa-car-side mt-1 ms-1 me-1 mb-3"></i>
+          <a href="/terms/privacy_policy">Conditions générales</a>
+          <i class="fa-solid fa-car-side mt-1 ms-1 me-1 mb-3"></i>
+          <a href="/terms/privacy_policy">Infos sur l'entreprise</a>
+          <i class="fa-solid fa-car-side mt-1 ms-1 me-1 mb-3"></i>
 
-    <%= yield %>
+      </div>
+    </footer>
   </body>
+
+  <%# <footer class="container footer">
+    <div class="footer">
+      <div class="infos-footer">
+        <div class="col-6">
+          <p>Coucou</p>
+        </div>
+        <div class="col-6">
+          <p>ohohohoho</p>
+        </div>
+      </div>
+      <div class="text-center">
+        <p>© 2022 L'essence c'est trop</p>
+      </div>
+    </div>
+  </footer> %>
+
+
 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
