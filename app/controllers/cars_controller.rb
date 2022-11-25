@@ -31,7 +31,7 @@ class CarsController < ApplicationController
     @car.user = current_user
     authorize @car
     if @car.save
-      sleep 3
+      # sleep 3
       redirect_to cars_path
     else
       render :new, status: :unprocessable_entity
@@ -39,7 +39,6 @@ class CarsController < ApplicationController
   end
 
   def show
-    @car.user = current_user
     authorize @car
     @booking = Booking.new
     @dates = []
